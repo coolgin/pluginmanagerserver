@@ -26,20 +26,6 @@ public class ServerHandler extends ChannelHandlerAdapter {
 		super.channelReadComplete(ctx);
 	}
 	
-	/**
-	 * 写入文件结尾符
-	 * @param channel
-	 */
-	private void writeContenEnd(Channel channel) {
-		ByteBuf buffer = channel.alloc().buffer(6);
-		byte[] buf = new String(Constant.FILE_SEPARATOR).getBytes(CharsetUtil.UTF_8);
-		buffer.writeBytes(buf);
-		channel.pipeline().writeAndFlush(buffer);
-		channel.pipeline().addBefore("chunkedWriteHandler", "marencoder", Server.marshallingEncoderCache);
-	}
-	
-	
-
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg)
 			throws Exception {
@@ -120,6 +106,18 @@ public class ServerHandler extends ChannelHandlerAdapter {
 	private void consoleLog(String msg)
 	{
 		System.out.println("[info]:"+msg);
+	}
+
+	/**
+	 * 写入文件结尾符
+	 * @param channel
+	 */
+	private void writeContenEnd(Channel channel) {
+		ByteBuf buffer = channel.alloc().buffer(6);
+		byte[] buf = new String(Constant.FILE_SEPARATOR).getBytes(CharsetUtil.UTF_8);
+		buffer.writeBytes(buf);
+		channel.pipeline().writeAndFlush(buffer);
+		channel.pipeline().addBefore("chunkedWriteHandler", "marencoder", Server.marshallingEncoderCache);
 	}
 
 	@Override

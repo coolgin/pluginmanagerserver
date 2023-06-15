@@ -37,41 +37,35 @@ public class Server {
 
 	private Channel serverChannel;
 
-	EventLoopGroup bossGroup;
+	private EventLoopGroup bossGroup;
 
-	EventLoopGroup workerGroup;
+	private EventLoopGroup workerGroup;
 
     public void bind(int port) throws InterruptedException {
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
-        EventLoopGroup workerGroup = new NioEventLoopGroup();
+        bossGroup = new NioEventLoopGroup();
+        workerGroup = new NioEventLoopGroup();
 
-        marshallingEncoderCache = MarshallingCodeCFactory.buildMarshallingEncoder();
 
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 100)
+				.option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new LoggingHandler(LogLevel.ERROR))
                 .childHandler(new ChannelInitializer<SocketChannel>() {
 
                     @Override
-                    protected void initChannel(SocketChannel ch)
-                            throws Exception {
-
-                        ch.pipeline().addLast("marencoder", marshallingEncoderCache);
-                        ch.pipeline().addLast(
-                                MarshallingCodeCFactory
-                                        .buildMarshallingDecoder());
-                        ch.pipeline().addLast("chunkedWriteHandler", new ChunkedWriteHandler());
-                        ch.pipeline().addLast("ServerHandler", new ServerHandler());
-
-                    }
+					protected void initChannel(SocketChannel ch) {
+						ch.pipeline().addLast("marEncoder", MarshallingCodeCFactory.buildMarshallingEncoder());
+						ch.pipeline().addLast("marDecoder", MarshallingCodeCFactory.buildMarshallingDecoder());
+						ch.pipeline().addLast("chunkedWriteHandler", new ChunkedWriteHandler());
+						ch.pipeline().addLast("ServerHandler", new ServerHandler());
+					}
                 });
 
         serverChannel = b.bind(port).sync().channel();
     }
 
-	@PreDestroy
 	public void shutdown() throws InterruptedException {
 		try {
 			serverChannel.close().sync();
