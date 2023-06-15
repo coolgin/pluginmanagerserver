@@ -1,7 +1,7 @@
 @echo off
 
 rem 配置文件根目录，如果为空，则当前目录为根目录
-set root.dir.path="D:\workspace\test"
+set root.dir.path="D:\work\file2"
 
 if "%root.dir.path%"=="" set root.dir.path="%CD%"
 

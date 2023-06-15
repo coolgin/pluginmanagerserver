@@ -45,7 +45,7 @@ public class Server {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup();
 
-
+		marshallingEncoderCache = MarshallingCodeCFactory.buildMarshallingEncoder();
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup, workerGroup)
                 .channel(NioServerSocketChannel.class)
@@ -56,8 +56,8 @@ public class Server {
 
                     @Override
 					protected void initChannel(SocketChannel ch) {
-						ch.pipeline().addLast("marEncoder", MarshallingCodeCFactory.buildMarshallingEncoder());
-						ch.pipeline().addLast("marDecoder", MarshallingCodeCFactory.buildMarshallingDecoder());
+						ch.pipeline().addLast("marEncoder", marshallingEncoderCache);
+						ch.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
 						ch.pipeline().addLast("chunkedWriteHandler", new ChunkedWriteHandler());
 						ch.pipeline().addLast("ServerHandler", new ServerHandler());
 					}
