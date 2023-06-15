@@ -1,4 +1,4 @@
-package com.yhs.fileserver.core;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.core;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,8 +13,6 @@ import java.util.List;
 
 /**
  * 文件扫描生成md5校验文件
- * 
- * @author huisong
  * 
  */
 public class FileScan {

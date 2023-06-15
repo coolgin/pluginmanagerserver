@@ -1,4 +1,4 @@
-package com.yhs.fileserver.common;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.common;
 
 public class ACTION {
 	

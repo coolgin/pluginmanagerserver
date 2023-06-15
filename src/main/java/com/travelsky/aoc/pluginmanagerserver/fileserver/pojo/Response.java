@@ -1,11 +1,9 @@
-package com.yhs.fileserver.pojo;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.pojo;
 
 import java.io.Serializable;
 
 /**
  * 
- * @author huisong
- *
  */
 public class Response implements Serializable {
 

@@ -1,4 +1,4 @@
-package com.yhs.fileserver.core;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.core;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,8 +13,7 @@ import java.util.Set;
  * 客户端需要删除的文件列表<br>
  * 客户端需要更新覆盖的文件列表<br> 
  * 客户端需要新增加的文件列表
- * @author huisong
- * 
+ *
  */
 public class CompareServer {
 

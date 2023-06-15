@@ -1,13 +1,13 @@
-package com.yhs.fileserver.server;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.server;
 
 import java.io.RandomAccessFile;
 
-import com.yhs.fileserver.common.Constant;
-import com.yhs.fileserver.common.FileUtil;
-import com.yhs.fileserver.core.CompareServer;
-import com.yhs.fileserver.core.FileScan;
-import com.yhs.fileserver.pojo.Request;
-import com.yhs.fileserver.pojo.Response;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.Constant;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.FileUtil;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.core.CompareServer;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.core.FileScan;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.pojo.Request;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.pojo.Response;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -19,11 +19,6 @@ import io.netty.channel.ChannelProgressiveFutureListener;
 import io.netty.channel.DefaultFileRegion;
 import io.netty.util.CharsetUtil;
 
-/**
- * 
- * @author huisong
- * 
- */
 public class ServerHandler extends ChannelHandlerAdapter {
 
 	@Override

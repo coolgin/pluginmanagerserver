@@ -1,31 +1,21 @@
-package com.yhs.fileserver.client;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.client;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.List;
-import java.util.Stack;
-
-import com.yhs.fileserver.common.ACTION;
-import com.yhs.fileserver.common.Constant;
-import com.yhs.fileserver.common.FileUtil;
-import com.yhs.fileserver.common.MarshallingCodeCFactory;
-import com.yhs.fileserver.core.FileScan;
-import com.yhs.fileserver.pojo.Request;
-import com.yhs.fileserver.pojo.Response;
-
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.ACTION;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.Constant;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.FileUtil;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.MarshallingCodeCFactory;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.core.FileScan;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.pojo.Request;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.pojo.Response;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
 
-/**
- * 
- * @author huisong
- * 
- */
+import java.io.*;
+import java.util.List;
+import java.util.Stack;
+
 public class ClientHandler extends ChannelHandlerAdapter {
 	/**
 	 * Creates a client-side handler.
@@ -59,7 +49,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 		byte[] bytes = null;
 		try {
 			bytes = FileUtil
-					.readFile(com.yhs.fileserver.common.Constant.clientMd5);
+					.readFile(Constant.clientMd5);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -201,7 +191,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 	private void responseRead(ChannelHandlerContext ctx, Response resp) {
 
 		if (resp.getResCode().equals(
-				com.yhs.fileserver.common.Constant.SuccessCode)) {
+				Constant.SuccessCode)) {
 			downList = new Stack<String>();
 			consoleLog(resp.getResMessage());
 			deleteFiles = (List<String>) resp.getDeleteFiles();

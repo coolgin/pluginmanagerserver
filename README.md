@@ -19,7 +19,7 @@ set root.dir.exclude=
 set root.dir.excludeDir=
 
 ::默认端口是9999
-java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.server.Server
+java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar server.com.travelsky.aoc.pluginmanagerserver.Server
 pause > nul
 ```
 运行runServer.bat
@@ -39,7 +39,7 @@ root_dir_exclude=
 root_dir_excludeDir=
 
 #默认端口是9999
-java -Droot.dir.path=${root_dir_path} -Droot.dir.exclude=${root_dir_exclude} -Droot.dir.excludeDir=${root_dir_excludeDir} -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.server.Server
+java -Droot.dir.path=${root_dir_path} -Droot.dir.exclude=${root_dir_exclude} -Droot.dir.excludeDir=${root_dir_excludeDir} -cp fileserver-0.0.1-SNAPSHOT.jar server.com.travelsky.aoc.pluginmanagerserver.Server
 ```
 客户端更新一般在windows下，在windows下配置好runClient.bat的root.dir.path后运行即可。
 

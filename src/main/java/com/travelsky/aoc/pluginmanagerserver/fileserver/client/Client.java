@@ -1,10 +1,7 @@
-package com.yhs.fileserver.client;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.client;
 
-import java.net.InetAddress;
-
-import com.yhs.fileserver.common.MarshallingCodeCFactory;
-import com.yhs.fileserver.core.FileScan;
-
+import com.travelsky.aoc.pluginmanagerserver.fileserver.common.MarshallingCodeCFactory;
+import com.travelsky.aoc.pluginmanagerserver.fileserver.core.FileScan;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -14,11 +11,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-/**
- * 
- * @author huisong
- *
- */
+import java.net.InetAddress;
+
 public class Client {
 	
 	public static String ip ;

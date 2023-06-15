@@ -1,4 +1,4 @@
-package com.yhs.fileserver.common;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.common;
 
 import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;

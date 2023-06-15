@@ -11,7 +11,7 @@ rem 不删除目录列表，分号分隔
 set root.dir.excludeDir="log"
 
 rem 启动更新
-java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.client.Client 127.0.0.1 9999
+java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar client.com.travelsky.aoc.pluginmanagerserver.Client 127.0.0.1 9999
 if "%errorlevel%"=="0" echo [info]: 连接关闭
 
 rem 启动应用

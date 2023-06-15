@@ -1,10 +1,5 @@
-package com.yhs.fileserver.common;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.common;
 
-/**
- * 
- * @author huisong
- *
- */
 public class Constant {
 
 	/**

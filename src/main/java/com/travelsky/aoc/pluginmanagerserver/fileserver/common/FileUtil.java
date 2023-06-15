@@ -1,4 +1,4 @@
-package com.yhs.fileserver.common;
+package com.travelsky.aoc.pluginmanagerserver.fileserver.common;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

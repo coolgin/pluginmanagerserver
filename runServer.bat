@@ -8,4 +8,4 @@ set root.dir.exclude=
 set root.dir.excludeDir=
 
 ::默认端口是9999
-java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.server.Server
+java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar server.com.travelsky.aoc.pluginmanagerserver.Server
