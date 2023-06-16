@@ -23,7 +23,7 @@ public class Server {
 	public static ChannelHandler marshallingEncoderCache;
 
 	@PostConstruct
-	public static void main() throws Exception {
+	public void main() throws Exception {
 		int port = 9999;
 		/*if (args != null && args.length > 0) {
 			try {
@@ -32,7 +32,7 @@ public class Server {
 			}
 		}*/
 		FileScan.getDefault().scanningAndWrite("md5.record");
-		new Server().bind(port);
+		bind(port);
 	}
 
 	private Channel serverChannel;
@@ -66,12 +66,12 @@ public class Server {
         serverChannel = b.bind(port).sync().channel();
     }
 
-	public void shutdown() throws InterruptedException {
+	/*public void shutdown() throws InterruptedException {
 		try {
 			serverChannel.close().sync();
 		} finally {
 			workerGroup.shutdownGracefully();
 			bossGroup.shutdownGracefully();
 		}
-	}
+	}*/
 }

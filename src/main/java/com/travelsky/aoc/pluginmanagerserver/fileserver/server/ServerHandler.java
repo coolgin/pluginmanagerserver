@@ -2,6 +2,7 @@ package com.travelsky.aoc.pluginmanagerserver.fileserver.server;
 
 import java.io.RandomAccessFile;
 
+import com.travelsky.aoc.pluginmanagerserver.fileserver.ClientManager;
 import com.travelsky.aoc.pluginmanagerserver.fileserver.common.Constant;
 import com.travelsky.aoc.pluginmanagerserver.fileserver.common.FileUtil;
 import com.travelsky.aoc.pluginmanagerserver.fileserver.core.CompareServer;
@@ -22,11 +23,6 @@ import io.netty.util.CharsetUtil;
 public class ServerHandler extends ChannelHandlerAdapter {
 
 	@Override
-	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-		super.channelReadComplete(ctx);
-	}
-	
-	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg)
 			throws Exception {
 		Request req = (Request) msg;
@@ -36,7 +32,9 @@ public class ServerHandler extends ChannelHandlerAdapter {
 		switch (code) {
 		//差异列表
 		case 0x001:
-			byte[] bytes = req.getData();
+			ClientSession session = ClientSession.builder().channel(ctx).request(req).build();
+			ClientManager.put(req.getIp(), req.getService(), session);
+			/*byte[] bytes = req.getData();
 			String md5Name = Constant.clientMd5 + ctx.channel().id();
 			FileUtil.writeFile(md5Name, bytes);
 			CompareServer compare = new CompareServer(md5Name,Constant.serverMd5);
@@ -49,7 +47,7 @@ public class ServerHandler extends ChannelHandlerAdapter {
 			res.setResCode(Constant.SuccessCode);
 			res.setResMessage("成功获取文件差异列表");
 			res.setResType(Constant.TYPE_GET_DIFFERENT);
-			ctx.writeAndFlush(res);
+			ctx.writeAndFlush(res);*/
 			break;
 		
 		//文件大小
@@ -124,5 +122,10 @@ public class ServerHandler extends ChannelHandlerAdapter {
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		cause.printStackTrace();
 		ctx.close();// 发生异常，关闭链路
+	}
+
+	@Override
+	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+		super.channelInactive(ctx);
 	}
 }

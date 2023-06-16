@@ -51,6 +51,16 @@ public class Request implements Serializable {
 	}
 
 	String ip;
-	
+
+	String service;
+
 	byte[] data;
+
+	public String getService() {
+		return service;
+	}
+
+	public void setService(String service) {
+		this.service = service;
+	}
 }
