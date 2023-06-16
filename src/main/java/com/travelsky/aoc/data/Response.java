@@ -1,4 +1,4 @@
-package com.travelsky.aoc.pluginmanagerserver.fileserver.pojo;
+package com.travelsky.aoc.data;
 
 import java.io.Serializable;
 

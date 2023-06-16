@@ -56,7 +56,7 @@ public class Server {
 
                     @Override
 					protected void initChannel(SocketChannel ch) {
-						ch.pipeline().addLast("marEncoder", marshallingEncoderCache);
+						ch.pipeline().addLast("marencoder", marshallingEncoderCache);
 						ch.pipeline().addLast(MarshallingCodeCFactory.buildMarshallingDecoder());
 						ch.pipeline().addLast("chunkedWriteHandler", new ChunkedWriteHandler());
 						ch.pipeline().addLast("ServerHandler", new ServerHandler());

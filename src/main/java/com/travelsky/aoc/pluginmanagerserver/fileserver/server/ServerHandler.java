@@ -6,8 +6,8 @@ import com.travelsky.aoc.pluginmanagerserver.fileserver.common.Constant;
 import com.travelsky.aoc.pluginmanagerserver.fileserver.common.FileUtil;
 import com.travelsky.aoc.pluginmanagerserver.fileserver.core.CompareServer;
 import com.travelsky.aoc.pluginmanagerserver.fileserver.core.FileScan;
-import com.travelsky.aoc.pluginmanagerserver.fileserver.pojo.Request;
-import com.travelsky.aoc.pluginmanagerserver.fileserver.pojo.Response;
+import com.travelsky.aoc.data.Request;
+import com.travelsky.aoc.data.Response;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
